@@ -1,11 +1,12 @@
 import { Utils } from "./utils";
 
 export class Table {
-	constructor(columns) {
+	constructor(callback) {
 		this.element = null;
 		this.className = Utils.randomClassName(12);
-		this.columns = columns;
+		//this.columns = columns;
 		//this.omClick
+		this.callback = callback
 	}
 
 	render() {
@@ -37,8 +38,9 @@ export class Table {
 		});
 		this.element.innerHTML = innerHTML;
 		this.element.addEventListener('click', (e) => {
-			let position = e.target.className.split('_');
-			console.log(position)
+			let position = e.target.closest('.cell').className.split('_');
+			//Utils.showSuccess(Utils.randomClassName())
+			this.callback('table', position)
 		});
 	}
 
