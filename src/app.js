@@ -2,6 +2,8 @@ import { Header } from "./header"
 import { Footer } from "./footer"
 import { Table } from "./table";
 import { ConfigEditor } from "./config-editor";
+import { Utils } from "./utils";
+import { Storage } from "./storage";
 
 const APP_NAME = 'TEMPLATE';
 
@@ -11,13 +13,16 @@ export class App {
 		this.header = new Header(APP_NAME);
 		this.footer =  new Footer();
 
-		this.table = new Table();
-		this.configEditor = new ConfigEditor('CONFIG')
+		this.table = new Table(this.callback.bind(this));
+		this.configEditor = new ConfigEditor('CONFIG', this.callback.bind(this))
 		this.importExport = new ConfigEditor('IMPORT/EXPORT')
 		
 		this.components.push(this.table)
 		this.components.push(this.configEditor)
 		this.components.push(this.importExport)
+
+		this.storage = new Storage();
+		this.config = this.storage.get('config');
 	}
 
 	render() {
@@ -33,11 +38,43 @@ export class App {
 	}
 
 	run() {
-		const data = [
-			{ id: 1, name: 'John', age: 25, city: 'New York' },
-			{ id: 2, name: 'Alice', age: 30, city: 'London' },
-			{ id: 3, name: 'Bob', age: 28, city: 'Paris' }
-		];
+		this.updateConfig(this.config);
+		this.configEditor.run();
+	}
+
+	updateConfig(config) {
+		this.config = config;
+		let lines = config.split('---');
+		let data = [];
+		lines.forEach(e => {
+			let line = {title:e};
+			data.push(line);
+
+		})
 		this.table.setData(data);
+		this.storage.set('config', this.config);
+	}
+
+	callback(message, data) {
+		
+		let result = null;
+
+		switch (message) {
+			case 'table':
+				Utils.showSuccess(data);
+				break;
+			case 'config-change':
+				console.log(data)
+				if (data != null){
+					//let json = JSON.parse(data)
+					//console.log(json);
+					this.updateConfig(data);
+				}				
+				break;
+			case 'load-config':
+				return this.config;
+		}
+
+		return result;
 	}
 }

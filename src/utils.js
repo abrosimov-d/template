@@ -8,4 +8,14 @@ export class Utils {
 		}
 		return result;
 	}
+
+	static showSuccess(message) {
+		let toast = new Notyf();
+		toast.success({message:message});
+	}
+
+	static showError(message) {
+		let toast = new Notyf();
+		toast.error({duration: 10000, message:message});
+	}
 }
