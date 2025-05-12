@@ -44,6 +44,8 @@ export class App {
 
 	updateConfig(config) {
 		this.config = config;
+		if (config == null)
+			return
 		let lines = config.split('---');
 		let data = [];
 		lines.forEach(e => {
