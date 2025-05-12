@@ -15,10 +15,8 @@ export class Table {
 	setData(data) {
 		if (this.element == null) {
 			this.element = document.querySelector('.'+this.className);
-			console.log(this.element);
 		}
 		let innerHTML = ''
-		console.log(data)
 		let headers = Object.keys(data[0]);
 
 		let x = 0;
@@ -31,7 +29,7 @@ export class Table {
 			let line = ''
 			x = 0;
 			headers.forEach(header => {
-				line += `<td class='cell cell_${x}_${y}'>` + row[header] + '</td>'
+				line += `<td class='cell cell_${x}_${y}'>` + '<kbd>' + row[header] + '</kbd>' + '</td>'
 				x++;
 			})
 			y++;

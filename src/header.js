@@ -1,9 +1,10 @@
 export class Header {
-	constructor() {
-
+	constructor(title) {
+		this.title = title;
+		document.title = title;
 	}
 
 	render() {
-		return '<header>HEADER</header>'
+		return `<header class="container">${this.title}</header>`
 	}
 }

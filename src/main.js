@@ -2,5 +2,5 @@ import './style.css'
 import { App } from './app'
 
 let app = new App()
-document.querySelector('#app').innerHTML = app.render()
+document.querySelector('body').innerHTML = app.render()
 app.run();

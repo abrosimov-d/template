@@ -4,6 +4,6 @@ export class Footer{
 	}
 
 	render() {
-		return '<footer>2025</footer>'
+		return '<footer class="container">2025</footer>'
 	}
 }
