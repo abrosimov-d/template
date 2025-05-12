@@ -22,7 +22,7 @@ export class App {
 		this.components.push(this.importExport)
 
 		this.storage = new Storage();
-		this.config = this.storage.get('config');
+		this.config = this.storage.get('config', '');
 	}
 
 	render() {

@@ -8,8 +8,13 @@ export class Storage {
         localStorage.setItem(key, value);
     }
 
-    get(key) {
-        //return this.data[key];
-        return localStorage.getItem(key);
+    get(key, def) {
+        let result = def;
+        try {
+            result = localStorage.getItem(key)
+        } catch (error) {
+            
+        }
+        return result;
     }
 }
