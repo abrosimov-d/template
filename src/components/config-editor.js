@@ -18,7 +18,7 @@ export class ConfigEditor {
     }
 
     run() {
-        let configData = this.callback('load-config');
+        let configData = this.callback('config-load');
         
         if (this.textarea == null)
             this.textarea = document.querySelector('.'+this.textareaClassName)
@@ -26,8 +26,13 @@ export class ConfigEditor {
         this.textarea.textContent = configData;
 
         this.textarea.addEventListener('change', () => {
-            console.log(this.value)
             this.callback('config-change', this.textarea.value);
+            this.callback('export', this.textarea.value);
         })
+    }
+
+    setText(text) {
+        if (this.textarea != null)
+            this.textarea.textContent = text;
     }
 }

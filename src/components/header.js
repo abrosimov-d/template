@@ -5,6 +5,6 @@ export class Header {
 	}
 
 	render() {
-		return `<header class="container">${this.title}</header>`
+		return `<header class="container"><h3>${this.title}</h3></header>`
 	}
 }

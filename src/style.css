@@ -3,10 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -38,25 +34,6 @@ h1 {
   text-align: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-  .cell {
-    cursor: pointer;
-    &:hover {
-      background: #f9f9f9;
-    }
-  }
-}
-
 .cell {
   cursor: pointer;
   &:hover {
@@ -66,6 +43,26 @@ h1 {
 
 textarea {
   font-family: monospace; 
-  font-size: 16px;
-  height: 400px;
+  font-size: 14px;
+  height: 200px;
+}
+
+.promt-textarea {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.toolbar-input {
+  max-width: 70px;
+  margin-right: 20px;
+}
+
+.toolbar-button{
+  margin-right: 20px;
+}
+
+.toolbar {
+  margin-bottom: 20px;
+  text-align: center;
 }

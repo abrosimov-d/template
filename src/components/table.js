@@ -44,5 +44,7 @@ export class Table {
 		});
 	}
 
-	//setOnClick()
+	run() {
+		//this.setData(this.data);
+	}
 }
